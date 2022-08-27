@@ -1,0 +1,74 @@
+version: "2.0"
+
+stories:
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+
+- story: sad path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+
+- story: sad path 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_goodbye
+
+- story: to_solve_TMax_issue
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: tmax_like_things_stops_working
+  - slot_was_set:
+    - object: Tmax
+  - action: utter_tmax_solution
+
+- story: reconnect_Printer_Salon_Tracker
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: bot_challenge
+  - action: utter_iamabot
+  - intent: reconnect_printer_of_salon_tracker
+  - slot_was_set:
+    - machine_type: printer
+  - action: utter_printer_connect_solution
+  - intent: user_satisfied
+  - action: utter_did_that_help
+
+- story: Share the URL
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: share_required_url_link
+  - slot_was_set:
+    - process: set-up
+    - item: calender
+  - action: action_share_url
+
+steps:
+- intent: greet_salon_bot
+- action: utter_salon_bot_greet
+- intent: intro_about_salon_tracker
+- action: utter_intro_salon_tracker
+- intent: getting_started_calender
+- action: utter_getting_start_calender
+- intent: getting_started_tanning_calender
+- action: utter_getting_started_tanning_calender
+
+

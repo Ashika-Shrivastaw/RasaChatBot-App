@@ -1,0 +1,104 @@
+version: '2.0'
+config:
+  store_entities_as_slots: true
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- greet:
+    use_entities: true
+- goodbye:
+    use_entities: true
+- affirm:
+    use_entities: true
+- deny:
+    use_entities: true
+- mood_great:
+    use_entities: true
+- mood_unhappy:
+    use_entities: true
+- bot_challenge:
+    use_entities: true
+- tmax_like_things_stops_working:
+    use_entities: true
+- reconnect_printer_of_salon_tracker:
+    use_entities: true
+- user_satisfied:
+    use_entities: true
+- share_required_url_link:
+    use_entities: true
+entities:
+- object
+- machine_type
+- process
+- item
+slots:
+  object:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+  machine_type:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+  process:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+  item:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+responses:
+  utter_greet:
+  - text: Hey! How are you?
+  - text: Hi, How can I help you today?
+  utter_cheer_up:
+  - image: https://i.imgur.com/nGF1K8f.jpg
+    text: 'Here is something to cheer you up:'
+  utter_did_that_help:
+  - buttons:
+    - payload: /affirm
+      title: yes, it helped
+    - payload: /deny
+      title: no, it did not
+    text: Did that help you?
+  utter_happy:
+  - text: Great, carry on!
+  utter_goodbye:
+  - text: Bye
+  utter_iamabot:
+  - text: Yes, I am a bot, powered by Rasa and working for Salon Tracker.
+  - text: I am a bot assistant of Salon Tracker. Need help, ask me anything
+  utter_tmax_solution:
+  - text: Unplug and re-plug the {object} cable back into the PC, then restart your Salon Tracker App and see if it pulls through your timers. If you’re still having issues with it connecting, restart the {object} and then restart Salon Tracker again.
+  utter_printer_connect_solution:
+  - text: If you unplug your {machine_type} and plug it back it, this can often create a copy of the {machine_type} on your PC. If you go to the admin section on Salon Tracker then to the hardware tab under the {machine_type} section you may see multiple copies of the {machine_type} in your drop down. To find out which is the active copy, open ‘Printers & Scanners’ in your settings, you should see ‘idle’ next to the one that’s currently active. Set this as the {machine_type} in Salon Tracker and you should now be able to print.
+  utter_getting_start_calender:
+  - buttons:
+    - payload: /getting_started_calender
+      title: Calender
+    - payload: /getting_started_tanning_calender
+      title: Tanning Calender
+    text: Which type of calender details would you prefer?
+  utter_getting_started_tanning_calender:
+  - image: https://images.fresha.com/locations/location-profile-images/160720/267374/734a232d-d499-463d-8f3b-191f37ae64cb.jpg?class=width-large
+    text: to initially set up your tanning calendar(s) on your Salon Tracker Software - this is the link to follow {link}
+  utter_about_salon_tracker:
+    - text: Here is the details - SalonTracker (www.salontracker.co.uk ) is a salon management software package sold to Hair, Beauty, Nails, Spa and Tanning Salons within the UK. if want to know more click on the [website](https://www.salontracker.co.uk/Default.aspx)
+actions:
+  - action_share_url
+forms:
+  person_detail_form:
+    required_slots:
+        details:
+          - type: from_entity
+            entity: name
+        num_people:
+          - type: from_entity
+            entity: number
+e2e_actions: []

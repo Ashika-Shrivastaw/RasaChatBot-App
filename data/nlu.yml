@@ -1,0 +1,148 @@
+version: "2.0"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: goodbye
+  examples: |
+    - good afternoon
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+
+- intent: tmax_like_things_stops_working
+  examples: |
+    - What do I do if my [Tmax](object) stops working?
+    - My [tmax](object) is not working
+    - How to fix my [Tmax machine](object) issue?
+    - Issue with [tmax machine](object)
+    - Suggest how to fix [Tmax](object) issue
+    - My [tmax](object) stopped working. Suggest
+
+- intent: reconnect_printer_of_salon_tracker
+  examples: |
+    - How do I reconnect my [printer](machine_type) of Salon Tracker
+    - My [printer](machine_type) is not working
+    - How to fix my [printer](machine_type) issue?
+    - Issue with my [printer](machine_type)
+    - Suggest how to fix my [printer](machine_type) issue
+    - My [printer](machine_type) stopped working. Suggest
+    - How to connect with my [printer](machine_type)?
+    - How to work with my [printer](machine_type)?
+
+- intent: user_satisfied
+  examples: |
+    - ok
+    - thank you
+    - confused
+    - not sure
+    - okay
+    - Okay
+    - fine
+    - that worked
+    - it is useful
+    - thanks
+
+- intent: share_required_url_link
+  examples: |
+    - Show me how to [set-up]{"entity": "process", "value": "set-up"} a [calender]{"entity": "item", "value": "calender"}
+    - Tell me how to [work with]{"entity": "process", "value": "work with"} a [calender]{"entity": "item", "value": "calender"}
+    - Show me how to [set-up]{"entity": "process", "value": "set-up"} a [tanning calender]{"entity": "item", "value": "tanning calender"}
+    - Tell me how to [work with]{"entity": "process", "value": "work with"} a [tanning calender]{"entity": "item", "value": "tanning calender"}
+    - Show me how to [add booking]{"entity": "process", "value": "add booking"} to a [calender]{"entity": "item", "value": "calender"}
+    - Tell me how to [book]{"entity": "process", "value": "book"} a [calender]{"entity": "item", "value": "calender"}
+    - Show me how to [add booking]({"entity": "process", "value": "add booking"} to a [tanning calender]{"entity": "item", "value": "tanning calender"}
+    - Tell me how to [book]{"entity": "process", "value": "book"} a [tanning calender]{"entity": "item", "value": "tanning calender"}
+
+- regex: phone_number
+  examples: |
+  - \d{10,12}
+
+- lookup: cities
+  examples: |
+    - New York
+    - London
+    - Bristol
+    - Oxford
+    - California
